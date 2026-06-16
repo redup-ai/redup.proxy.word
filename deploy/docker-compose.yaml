@@ -1,0 +1,21 @@
+name: proxy-word
+
+services:
+  nginx:
+    image: nginx:alpine
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://nginx/health"]
+      interval: 10s
+      timeout: 2s
+      retries: 5
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ${PWD}/deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
