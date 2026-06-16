@@ -1,4 +1,4 @@
-# redup.proxy.word
+# redup.proxy.world
 
 ```
 docker compose -f deploy/docker-compose.yaml up -d --force-recreate
